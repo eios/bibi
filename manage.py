@@ -12,5 +12,14 @@ manager.add_option('-n', '--name', dest='app_name', required=False, choices=APP_
 
 manager.add_command("showurls", ShowUrls())
 
+
+@manager.command
+def create_admin(name='navy', password='123456', email='navych@126.com'):
+    from application.models import User
+    user = User.create(email=email, password=password, name=name)
+    user.roles.append('ADMIN')
+    user.save()
+
+
 if __name__ == '__main__':
     manager.run()

@@ -77,64 +77,64 @@ class BaseConfig(object):
 
     MONGODB_SETTINGS = {
         'db': 'bibi',
-        'host': 'localhost',
+        'host': 'local_mongo',
         'read_preference': ReadPreference.PRIMARY_PREFERRED,
         'port': 27017,
     }
     ORDER_DB_CONFIG = {
         'alias': 'order_db',
         'name': 'order',
-        'host': 'localhost',
+        'host': 'local_mongo',
         'port': 27017,
     }
 
     INVENTORY_DB_CONFIG = {
         'alias': 'inventory_db',
         'name': 'inventory',
-        'host': 'localhost',
+        'host': 'local_mongo',
         'port': 27017,
     }
 
     CART_DB_CONFIG = {
         'alias': 'cart_db',
         'name': 'cart',
-        'host': 'localhost',
+        'host': 'local_mongo',
         'port': 27017,
     }
 
     CONTENT_DB_CONFIG = {
         'alias': 'content_db',
         'name': 'content',
-        'host': 'localhost',
+        'host': 'local_mongo',
         'port': 27017,
     }
 
     LOG_DB_CONFIG = {
         'alias': 'log_db',
         'name': 'order',
-        'host': 'localhost',
+        'host': 'local_mongo',
         'port': 27017,
     }
 
     SESSION_REDIS = {
-        'host': 'localhost',
+        'host': 'local_redis',
         'port': 6379,
-        'db': 0,
+        'db': 5,
         'encoding': 'utf-8',
         'encoding_errors': 'strict',
         'decode_responses': False
     }
 
     REDIS_CONFIG = {
-        'host': 'localhost',
+        'host': 'local_redis',
         'port': 6379,
-        'db': 0,
+        'db': 6,
         'encoding': 'utf-8',
         'encoding_errors': 'strict',
         'decode_responses': False
     }
 
-    MONGO_INVENTORY_HOST = 'localhost'
+    MONGO_INVENTORY_HOST = 'local_mongo'
     MONGO_INVENTORY_PORT = 27017
     MONGO_INVENTORY_DBNAME = 'inventory'
 
@@ -169,8 +169,8 @@ class BaseConfig(object):
         '^/_debug_toolbar/',
     )
 
-    CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//',
-    CELERY_RESULT_BACKEND = 'amqp://guest:guest@localhost:5672//'
+    CELERY_BROKER_URL = 'redis://local_redis:6379/3',
+    CELERY_RESULT_BACKEND = 'redis://local_redis:6379/4'
 
     CELERY_IMPORTS = (
         'application.services.jobs.image',
@@ -203,7 +203,7 @@ class ProdConfig(BaseConfig):
 
     MONGODB_SETTINGS = {
         'db': 'bibi',
-        'host': 'localhost',
+        'host': 'local_mongo',
         'read_preference': ReadPreference.PRIMARY_PREFERRED,
         'port': 27017,
     }
